@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhytoCheck - Présentation Projet & MVP</title>
+    <title>NutriSecure - Présentation Projet</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800a&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        body { font-family: 'Lato', sans-serif; background-color: #f8fafc; }
+        
+        /* Chart Container Styling */
         .chart-container { 
             position: relative; 
             width: 100%; 
@@ -23,279 +25,273 @@
             max-height: 400px; 
         }
         @media (min-width: 768px) { .chart-container { height: 350px; } }
-        
-        /* Custom Scrollbar for Tables */
+
+        /* Spreadsheet Look for Table */
+        .spreadsheet-header {
+            background-color: #e2e8f0;
+            color: #475569;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #cbd5e1;
+        }
+        .spreadsheet-cell {
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        /* Custom Scrollbar */
         .overflow-x-auto::-webkit-scrollbar { height: 8px; }
         .overflow-x-auto::-webkit-scrollbar-track { background: #f1f1f1; }
-        .overflow-x-auto::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .overflow-x-auto::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
     </style>
-    <!-- Palette: Vibrant Professional (Deep Blue, Teal, Coral, White) -->
-    <!-- Hex Codes Used: #1e3a8a (Dark Blue), #14b8a6 (Teal), #f43f5e (Coral/Red), #f59e0b (Amber/Orange) -->
+    <!-- Palette: "Professional & Stylish" - Vibrant Blue/Cyan/Orange -->
+    <!-- Hex: #0ea5e9 (Sky Blue), #0f172a (Slate Dark), #f97316 (Orange Vibrant), #ffffff (White) -->
+    <!-- Palette Name: Modern Medical Tech -->
 </head>
-<body class="text-gray-800">
+<body class="text-slate-700">
 
     <!-- 1. HEADER / HOOK -->
-    <header class="bg-gradient-to-r from-blue-900 to-teal-600 text-white pt-16 pb-24 px-6 rounded-b-[3rem] shadow-xl">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">PhytoCheck</h1>
-            <p class="text-xl md:text-2xl font-light opacity-90 mb-8">Sécuriser le conseil au comptoir en 3 secondes.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">💊 Phytothérapie</span>
-                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">⚡️ Offline-First</span>
-                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">🛡️ Sécurité Patient</span>
-            </div>
+    <header class="bg-slate-900 text-white pt-20 pb-24 px-6 relative overflow-hidden">
+        <!-- Abstract Background Shapes (CSS/HTML only) -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#0ea5e9] opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#f97316] opacity-10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block bg-[#0ea5e9] text-white text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">Projet MVP</div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">NutriSecure</h1>
+            <p class="text-xl md:text-2xl font-light text-slate-300 mb-10 max-w-3xl mx-auto">
+                L'assistant qui sécurise le conseil en phytothérapie.<br>
+                <span class="text-[#0ea5e9] font-bold">Rapide. Fiable. Indispensable.</span>
+            </p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto -mt-16 px-4 space-y-16 mb-20">
+    <main class="max-w-6xl mx-auto -mt-16 px-4 space-y-20 mb-24 relative z-20">
 
-        <!-- 2. THE PROBLEM (Context) -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Text Context -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-1 transition duration-300">
-                <h2 class="text-2xl font-bold text-blue-900 mb-4 border-l-4 border-coral-500 pl-4 border-[#f43f5e]">Le Défi du Pharmacien</h2>
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Les ventes de compléments alimentaires explosent. Vos patients achètent du naturel en pensant "sans danger". 
-                    Mais face à une ordonnance complexe, vérifier chaque interaction plante/médicament prend du temps que vous n'avez pas.
+        <!-- 2. THE HUMAN CONTEXT (Storytelling) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <div class="bg-white rounded-2xl shadow-xl p-8 border-l-8 border-[#f97316]">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">Samedi matin, 10h30...</h2>
+                <p class="text-slate-600 mb-4 leading-relaxed">
+                    La pharmacie est pleine. Une patiente régulière, Mme Martin, vous tend une boîte de <strong>Ménogyne</strong> qu'elle a vue en pub. 
+                    <em>"C'est naturel, je peux le prendre avec mon traitement habituel ?"</em>
                 </p>
-                <div class="space-y-4">
-                    <div class="flex items-start">
-                        <span class="text-2xl mr-3">🕒</span>
-                        <p class="text-sm"><strong>Chronophage :</strong> Consulter le Vidal + Thériaque + Google prend > 5 min.</p>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="text-2xl mr-3">⚠️</span>
-                        <p class="text-sm"><strong>Risqué :</strong> Le risque d'interaction (ex: Millepertuis x Anticoagulants) est réel.</p>
-                    </div>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Vous savez qu'elle a eu un cancer du sein il y a 5 ans. Vous savez que "naturel" ne veut pas dire "sans danger". 
+                    Mais vérifier chaque plante (Sauge ? Houblon ?) dans le Vidal et sur Thériaque prendra 10 minutes. 
+                    Les autres patients s'impatientent.
+                </p>
+                <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                    <p class="text-sm text-orange-800 font-bold">⚠️ Le dilemme : Sécuriser (prendre du temps) ou Délivrer (prendre un risque) ?</p>
                 </div>
             </div>
 
-            <!-- Visualization: Market Reality -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center">
-                <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">La Réalité au Comptoir</h3>
+            <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col justify-center">
+                <h3 class="text-lg font-bold text-slate-700 mb-2 text-center">Pourquoi NutriSecure est nécessaire</h3>
+                <p class="text-center text-sm text-slate-500 mb-6">Répartition du risque sur les ventes de compléments</p>
                 <div class="chart-container">
-                    <canvas id="marketChart"></canvas>
+                    <canvas id="riskChart"></canvas>
                 </div>
-                <p class="text-xs text-center text-gray-400 mt-2">Estimation basée sur l'augmentation des ventes OTC</p>
             </div>
         </section>
 
-        <!-- 3. THE SOLUTION (Traffic Light System) -->
-        <section>
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-blue-900">La Solution PhytoCheck</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-2">Un système de feux tricolores immédiat, basé sur les principes actifs.</p>
-            </div>
+        <!-- 3. THE SOLUTION (Visual) -->
+        <section class="text-center">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">La Réponse en 3 Secondes</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto mb-12">
+                NutriSecure scanne la composition réelle du produit et la croise instantanément avec le profil pathologique du patient.
+            </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Green Card -->
-                <div class="bg-white border-t-8 border-teal-500 rounded-xl shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">🟢</div>
-                    <h3 class="text-xl font-bold text-teal-600 mb-2">Compatible</h3>
-                    <p class="text-sm text-gray-600">Aucune interaction connue avec le profil du patient.</p>
-                    <div class="mt-4 bg-teal-50 text-teal-800 text-xs py-1 px-3 rounded-full inline-block">Délivrance Autorisée</div>
+                <!-- Case 1 -->
+                <div class="bg-white rounded-xl shadow-md p-6 border border-slate-100 transform hover:scale-105 transition duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">✅</div>
+                    <h3 class="font-bold text-lg mb-2">Feu Vert</h3>
+                    <p class="text-sm text-slate-500">Aucune interaction détectée. Délivrance sécurisée.</p>
                 </div>
-                <!-- Orange Card -->
-                <div class="bg-white border-t-8 border-amber-500 rounded-xl shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">🟠</div>
-                    <h3 class="text-xl font-bold text-amber-600 mb-2">Attention</h3>
-                    <p class="text-sm text-gray-600">Précautions d'emploi ou surveillance nécessaire.</p>
-                    <div class="mt-4 bg-amber-50 text-amber-800 text-xs py-1 px-3 rounded-full inline-block">Conseil Requis</div>
+                <!-- Case 2 -->
+                <div class="bg-white rounded-xl shadow-md p-6 border border-slate-100 transform hover:scale-105 transition duration-300">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⚠️</div>
+                    <h3 class="font-bold text-lg mb-2">Feu Orange</h3>
+                    <p class="text-sm text-slate-500">Précautions d'emploi (ex: décaler la prise de 2h).</p>
                 </div>
-                <!-- Red Card -->
-                <div class="bg-white border-t-8 border-red-500 rounded-xl shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">🔴</div>
-                    <h3 class="text-xl font-bold text-red-600 mb-2">Danger</h3>
-                    <p class="text-sm text-gray-600">Contre-indication formelle (Pathologie ou Médicament).</p>
-                    <div class="mt-4 bg-red-50 text-red-800 text-xs py-1 px-3 rounded-full inline-block">Ne pas délivrer</div>
+                <!-- Case 3 -->
+                <div class="bg-white rounded-xl shadow-md p-6 border border-slate-100 transform hover:scale-105 transition duration-300">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">⛔</div>
+                    <h3 class="font-bold text-lg mb-2">Feu Rouge</h3>
+                    <p class="text-sm text-slate-500">Contre-indication formelle. <strong>Ne pas délivrer.</strong></p>
                 </div>
             </div>
         </section>
 
-        <!-- 4. MVP DATA STRUCTURE (Focus: MENOGYNE) -->
-        <!-- This section answers the specific request to fill the table with Menogyne data -->
-        <section class="bg-blue-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold mb-4">🔍 Zoom MVP : La Structure de Données</h2>
-                <p class="text-blue-100 opacity-90">
-                    Pour le MVP, nous ne stockons pas seulement le "nom" du produit, mais ses <strong>principes actifs</strong>. 
-                    C'est ce qui permet au moteur de règles de détecter les conflits.
-                    Voici l'exemple concret pour le produit <strong>Ménogyne</strong>.
-                </p>
+        <!-- 4. DATABASE PREVIEW (The "Google Sheet") -->
+        <section class="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-white">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">🧠 Le Cœur du Système (Data MVP)</h2>
+                    <p class="text-slate-400 max-w-xl">
+                        Voici exactement comment nous structurons la donnée pour le MVP.
+                        L'intelligence ne vient pas du nom commercial, mais des <strong>principes actifs</strong> extraits.
+                        <br><span class="text-[#0ea5e9] text-sm mt-2 block">Données réelles extraites pour le produit "Ménogyne".</span>
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="bg-white/10 px-4 py-2 rounded-lg text-sm font-mono border border-white/20">Base: Google Sheets / Supabase</span>
+                </div>
             </div>
 
-            <!-- Simulation of the App Interface logic -->
-            <div class="bg-white text-gray-800 rounded-xl overflow-hidden shadow-lg">
-                <div class="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                    <h3 class="font-bold text-lg flex items-center">
-                        <span class="mr-2">📂</span> Base de Données (Aperçu Google Sheet / Supabase)
-                    </h3>
-                    <span class="text-xs font-mono bg-gray-200 px-2 py-1 rounded">Table: products_active_ingredients</span>
-                </div>
-                
+            <!-- The Integrated Sheet -->
+            <div class="bg-white text-slate-800 rounded-lg overflow-hidden shadow-lg border border-slate-700">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left">
-                        <thead class="bg-gray-50 text-gray-600 uppercase text-xs">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="spreadsheet-header">
                             <tr>
-                                <th class="px-6 py-3">Produit</th>
-                                <th class="px-6 py-3">Ingrédients Actifs (Clés)</th>
-                                <th class="px-6 py-3">Propriétés / Cible</th>
-                                <th class="px-6 py-3 text-red-600">⚠️ CI : Pathologie (Tags)</th>
-                                <th class="px-6 py-3 text-red-600">⚠️ CI : Médicament (Tags)</th>
+                                <th class="px-4 py-3 border-r border-slate-300 bg-slate-100">ID_Ref</th>
+                                <th class="px-4 py-3 border-r border-slate-300 bg-slate-100">Nom Commercial</th>
+                                <th class="px-4 py-3 border-r border-slate-300 bg-slate-100 w-1/4">Principes Actifs (Moteur)</th>
+                                <th class="px-4 py-3 border-r border-slate-300 bg-slate-100">Indication</th>
+                                <th class="px-4 py-3 border-r border-slate-300 bg-red-50 text-red-700">⛔ CI : Pathologies (Tags)</th>
+                                <th class="px-4 py-3 bg-red-50 text-red-700">⛔ CI : Traitements (Tags)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200">
+                        <tbody class="font-mono text-xs md:text-sm">
                             <!-- MENOGYNE ROW -->
-                            <tr class="hover:bg-blue-50 transition">
-                                <td class="px-6 py-4 font-bold text-blue-900">
-                                    Ménogyne (Les 3 Chênes)<br>
-                                    <span class="text-xs font-normal text-gray-500">EAN: 3525720002154</span>
+                            <tr class="hover:bg-blue-50 transition duration-150 bg-white">
+                                <td class="px-4 py-3 spreadsheet-cell text-slate-400">#001</td>
+                                <td class="px-4 py-3 spreadsheet-cell font-bold text-[#0ea5e9]">
+                                    MÉNOGYNE<br>
+                                    <span class="text-[10px] text-slate-400 font-normal">Les 3 Chênes</span>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3 spreadsheet-cell">
                                     <div class="flex flex-wrap gap-1">
-                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Sauge (Sage)</span>
-                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Houblon (Hops)</span>
-                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Lin (Flax)</span>
-                                        <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Zinc</span>
+                                        <span class="bg-slate-200 px-1.5 py-0.5 rounded">Sauge (Salvia)</span>
+                                        <span class="bg-slate-200 px-1.5 py-0.5 rounded">Houblon (Humulus)</span>
+                                        <span class="bg-slate-200 px-1.5 py-0.5 rounded">Lin (Linum)</span>
+                                        <span class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-500">Zinc</span>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 text-gray-600">
-                                    Troubles de la ménopause,<br>Bouffées de chaleur
+                                <td class="px-4 py-3 spreadsheet-cell">Bouffées de chaleur (Ménopause)</td>
+                                <td class="px-4 py-3 spreadsheet-cell bg-red-50/50">
+                                    <span class="font-bold text-red-600">#Cancer_Hormono_Dependant</span><br>
+                                    <span class="text-red-500">#Mastose</span><br>
+                                    <span class="text-red-500">#Fibromes</span>
                                 </td>
-                                <td class="px-6 py-4 bg-red-50">
-                                    <span class="font-semibold text-red-700">#Cancer_Hormono_Dependant</span><br>
-                                    <span class="text-xs text-red-500">(Présence Phytoestrogènes)</span>
-                                </td>
-                                <td class="px-6 py-4 bg-red-50">
-                                    <span class="font-semibold text-red-700">#Tamoxifène</span><br>
-                                    <span class="font-semibold text-red-700">#Traitement_Hormonal</span>
+                                <td class="px-4 py-3 spreadsheet-cell bg-red-50/50">
+                                    <span class="text-red-600">#Traitement_Hormonal</span>
                                 </td>
                             </tr>
-                            <!-- GENERIC EXAMPLE ROW -->
-                            <tr class="opacity-60">
-                                <td class="px-6 py-4 font-bold text-gray-500">
-                                    Millepertuis Arkogélules
+                            <!-- OTHER EXAMPLE ROW -->
+                            <tr class="bg-slate-50">
+                                <td class="px-4 py-3 spreadsheet-cell text-slate-400">#002</td>
+                                <td class="px-4 py-3 spreadsheet-cell font-bold text-slate-600">
+                                    ARKOGÉLULES MILLEPERTUIS
                                 </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 bg-gray-200 rounded-full text-xs">Millepertuis (Hypericum)</span>
+                                <td class="px-4 py-3 spreadsheet-cell">
+                                    <span class="bg-slate-200 px-1.5 py-0.5 rounded">Millepertuis (Hypericum)</span>
                                 </td>
-                                <td class="px-6 py-4">Dépression légère</td>
-                                <td class="px-6 py-4">
-                                    <span class="text-xs">#Photosensibilité</span>
+                                <td class="px-4 py-3 spreadsheet-cell">Dépression légère</td>
+                                <td class="px-4 py-3 spreadsheet-cell bg-red-50/30">
+                                    <span class="text-slate-500">#Bipolarité</span>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <span class="text-xs">#Anticoagulants</span>
-                                    <span class="text-xs">#Contraceptifs</span>
+                                <td class="px-4 py-3 spreadsheet-cell bg-red-50/30">
+                                    <span class="font-bold text-red-600">#Anticoagulants</span><br>
+                                    <span class="font-bold text-red-600">#Contraceptifs_Oraux</span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="bg-gray-50 px-6 py-4 text-xs text-gray-500">
-                    * Cette structure permet de croiser automatiquement les ingrédients avec le dossier patient. Si une patiente a un historique de cancer du sein, <strong>Ménogyne</strong> sortira en <span class="text-red-600 font-bold">ROUGE</span>.
+                <div class="bg-slate-100 p-3 text-xs text-slate-500 text-center border-t border-slate-200">
+                    Données prêtes à être importées. La détection des Tags déclenche l'alerte en <0.5s.
                 </div>
             </div>
         </section>
 
-        <!-- 5. ROADMAP & PHASES -->
+        <!-- 5. ROADMAP & BUDGET -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
-            <!-- Development Timeline -->
+            <!-- Phase List -->
             <div>
-                <h2 class="text-2xl font-bold text-blue-900 mb-6">🗓️ Roadmap de Développement</h2>
-                <div class="space-y-6">
-                    <!-- Step 1 -->
-                    <div class="flex">
-                        <div class="flex flex-col items-center mr-4">
-                            <div class="w-8 h-8 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                            <div class="h-full w-1 bg-blue-200 my-1"></div>
-                        </div>
-                        <div class="pb-6">
-                            <h3 class="text-lg font-bold text-gray-800">POC / MVP (1 Semaine)</h3>
-                            <p class="text-sm text-gray-600 mt-1">
-                                <strong>Objectif :</strong> Tester la logique de sécurité.<br>
-                                • Base de données : 50 produits clés (dont Ménogyne).<br>
-                                • Interface : Recherche manuelle (pas de scan OCR encore).<br>
-                                • Tech : Supabase + React (Lovable).
-                            </p>
-                        </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-6">🚀 Le Plan de Bataille (Roadmap)</h2>
+                <div class="space-y-8 relative pl-4 border-l-2 border-slate-200">
+                    <!-- Phase 1 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0ea5e9] border-4 border-white shadow"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Phase 1 : Le MVP (Semaine 1)</h3>
+                        <p class="text-sm text-[#0ea5e9] font-bold mb-2">Objectif : "Ça marche."</p>
+                        <p class="text-slate-600 text-sm">
+                            Développement d'une version web simple.<br>
+                            - Base de données : 50 produits (Focus Ménopause/Stress).<br>
+                            - Fonction : Recherche manuelle + Résultat Vert/Rouge.<br>
+                            - <strong>Test :</strong> Utilisation par vous sur 5 patients réels.
+                        </p>
                     </div>
-                    <!-- Step 2 -->
-                    <div class="flex">
-                        <div class="flex flex-col items-center mr-4">
-                            <div class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
-                            <div class="h-full w-1 bg-teal-200 my-1"></div>
-                        </div>
-                        <div class="pb-6">
-                            <h3 class="text-lg font-bold text-gray-800">Beta Test (Mois 1)</h3>
-                            <p class="text-sm text-gray-600 mt-1">
-                                <strong>Objectif :</strong> Feedback terrain.<br>
-                                • Déploiement chez 2 pharmacies partenaires.<br>
-                                • Correction des faux positifs.<br>
-                                • Optimisation Mobile/Tablette.
-                            </p>
-                        </div>
+
+                    <!-- Phase 2 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#f97316] border-4 border-white shadow"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Phase 2 : La Beta (Mois 1)</h3>
+                        <p class="text-sm text-[#f97316] font-bold mb-2">Objectif : "C'est utile."</p>
+                        <p class="text-slate-600 text-sm">
+                            Amélioration selon vos retours.<br>
+                            - Ajout de 500 produits.<br>
+                            - Design mobile optimisé pour usage au comptoir.<br>
+                            - Correction des "faux positifs".
+                        </p>
                     </div>
-                    <!-- Step 3 -->
-                    <div class="flex">
-                        <div class="flex flex-col items-center mr-4">
-                            <div class="w-8 h-8 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold" style="background-color:#f43f5e;">3</div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800">V1 Commerciale (Mois 2)</h3>
-                            <p class="text-sm text-gray-600 mt-1">
-                                <strong>Objectif :</strong> Vente & Fiabilité.<br>
-                                • Mode Offline complet (PWA).<br>
-                                • Import massif (2000+ produits).<br>
-                                • Module de paiement (Stripe).
-                            </p>
-                        </div>
+
+                    <!-- Phase 3 -->
+                    <div class="relative pl-8">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow"></div>
+                        <h3 class="text-xl font-bold text-slate-800">Phase 3 : V1 Commerciale (Mois 2)</h3>
+                        <p class="text-sm text-slate-500 font-bold mb-2">Objectif : "Ça se vend."</p>
+                        <p class="text-slate-600 text-sm">
+                            Version complète.<br>
+                            - Mode Offline (fonctionne sans internet).<br>
+                            - Module de paiement.<br>
+                            - Scan code-barres (OCR).
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Cost Breakdown Visualization -->
-            <div>
-                <h2 class="text-2xl font-bold text-blue-900 mb-6">💰 Structure de Coûts (Est.)</h2>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <p class="text-sm text-gray-600 mb-4">
-                        Investissement initial minimal grâce à l'usage de l'IA (Lovable/Claude) pour le code et Supabase (Free Tier) pour la donnée.
-                    </p>
-                    <div class="chart-container">
-                        <canvas id="costChart"></canvas>
-                    </div>
+            <!-- Cost Chart -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">💰 Estimation Budgétaire</h2>
+                <p class="text-sm text-slate-500 mb-6">Coûts de développement (Crédits IA) et Infrastructure.</p>
+                <div class="chart-container flex-grow">
+                    <canvas id="budgetChart"></canvas>
                 </div>
             </div>
         </section>
 
         <!-- 6. CONCLUSION -->
-        <footer class="bg-gray-800 text-white rounded-2xl p-8 text-center">
-            <h2 class="text-2xl font-bold mb-4">Prêt à sécuriser vos patients ?</h2>
-            <p class="mb-6 opacity-80 max-w-2xl mx-auto">
-                PhytoCheck n'est pas juste une application, c'est votre assistant de sécurité. 
-                Commençons par le MVP pour valider l'impact réel au comptoir.
+        <footer class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-3xl p-10 text-center shadow-2xl">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">On lance le développement ?</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+                La base de données est prête (voir tableau ci-dessus).<br>
+                Le besoin est validé. La technologie est accessible.<br>
+                <strong>NutriSecure</strong> peut être dans votre poche la semaine prochaine.
             </p>
-            <div class="inline-block border border-gray-500 px-8 py-3 rounded-lg bg-gray-700/50">
-                Prochaine étape : Validation de la liste des 50 premiers produits.
+            <div class="inline-flex items-center bg-[#f97316] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-orange-600 transition cursor-pointer">
+                Go pour le MVP 🚀
             </div>
         </footer>
 
     </main>
 
-    <!-- SCRIPT FOR CHARTS -->
+    <!-- CHART CONFIGURATION -->
     <script>
-        // --- Common Config ---
-        Chart.defaults.font.family = "'Inter', sans-serif";
-        Chart.defaults.color = '#4b5563';
+        Chart.defaults.font.family = "'Lato', sans-serif";
+        Chart.defaults.color = '#64748b';
 
-        // --- Label Wrapping Helper ---
+        // Helper for wrapping labels
         function wrapLabel(label, maxChars) {
             if (label.length <= maxChars) return label;
             const words = label.split(' ');
             const lines = [];
             let currentLine = words[0];
-
             for (let i = 1; i < words.length; i++) {
                 if (currentLine.length + 1 + words[i].length <= maxChars) {
                     currentLine += ' ' + words[i];
@@ -308,24 +304,24 @@
             return lines;
         }
 
-        // --- 1. Market Chart (Donut) ---
-        const ctxMarket = document.getElementById('marketChart').getContext('2d');
-        new Chart(ctxMarket, {
+        // 1. RISK CHART (Donut)
+        const ctxRisk = document.getElementById('riskChart').getContext('2d');
+        new Chart(ctxRisk, {
             type: 'doughnut',
             data: {
-                labels: ['Achats Sans Conseil (Risque)', 'Achats Sécurisés Pharm.', 'Achats Internet (Inconnu)'],
+                labels: ['Achats à risque (Sans conseil)', 'Achats Sécurisés (Pharmacie)', 'Internet (Inconnu)'],
                 datasets: [{
                     data: [45, 30, 25],
-                    backgroundColor: ['#f43f5e', '#14b8a6', '#f59e0b'], // Coral, Teal, Amber
+                    backgroundColor: ['#f97316', '#0ea5e9', '#cbd5e1'], // Orange, Blue, Grey
                     borderWidth: 0,
-                    hoverOffset: 4
+                    hoverOffset: 10
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },
+                    legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
                     tooltip: {
                         callbacks: {
                             title: function(tooltipItems) {
@@ -335,28 +331,34 @@
                             }
                         }
                     }
-                }
+                },
+                cutout: '70%'
             }
         });
 
-        // --- 2. Cost/Timeline Chart (Bar) ---
-        const ctxCost = document.getElementById('costChart').getContext('2d');
-        new Chart(ctxCost, {
+        // 2. BUDGET CHART (Bar)
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctxBudget, {
             type: 'bar',
             data: {
-                labels: ['Phase 1: MVP', 'Phase 2: V1 & Scale', 'Maintenance Mensuelle'],
+                labels: ['MVP (Semaine 1)', 'V1 (Mois 1-2)', 'Maintenance Mensuelle'],
                 datasets: [{
                     label: 'Coût Estimé ($ IA Credits)',
-                    data: [50, 250, 30],
-                    backgroundColor: '#1e3a8a', // Dark Blue
-                    borderRadius: 6
+                    data: [50, 300, 30],
+                    backgroundColor: ['#0ea5e9', '#0f172a', '#cbd5e1'],
+                    borderRadius: 8,
+                    barThickness: 40
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: { beginAtZero: true, grid: { display: false } },
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { borderDash: [5, 5], color: '#e2e8f0' },
+                        title: { display: true, text: 'Budget ($)' }
+                    },
                     x: { grid: { display: false } }
                 },
                 plugins: {
@@ -374,12 +376,5 @@
             }
         });
     </script>
-
-    <!-- 
-        NO SVG USED.
-        NO MERMAID JS USED.
-        Structure: Tailwind CSS Grid/Flex.
-        Palette: Deep Ocean & Coral (Vibrant Professional).
-    -->
 </body>
-</html>Screenshot 2026-02-24 at 10.52.53.png
+</html>
