@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhytoCheck - Présentation Projet & MVP</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800a&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px; 
+            max-height: 400px; 
+        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        
+        /* Custom Scrollbar for Tables */
+        .overflow-x-auto::-webkit-scrollbar { height: 8px; }
+        .overflow-x-auto::-webkit-scrollbar-track { background: #f1f1f1; }
+        .overflow-x-auto::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+    <!-- Palette: Vibrant Professional (Deep Blue, Teal, Coral, White) -->
+    <!-- Hex Codes Used: #1e3a8a (Dark Blue), #14b8a6 (Teal), #f43f5e (Coral/Red), #f59e0b (Amber/Orange) -->
+</head>
+<body class="text-gray-800">
+
+    <!-- 1. HEADER / HOOK -->
+    <header class="bg-gradient-to-r from-blue-900 to-teal-600 text-white pt-16 pb-24 px-6 rounded-b-[3rem] shadow-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">PhytoCheck</h1>
+            <p class="text-xl md:text-2xl font-light opacity-90 mb-8">Sécuriser le conseil au comptoir en 3 secondes.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">💊 Phytothérapie</span>
+                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">⚡️ Offline-First</span>
+                <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold">🛡️ Sécurité Patient</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto -mt-16 px-4 space-y-16 mb-20">
+
+        <!-- 2. THE PROBLEM (Context) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Text Context -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-1 transition duration-300">
+                <h2 class="text-2xl font-bold text-blue-900 mb-4 border-l-4 border-coral-500 pl-4 border-[#f43f5e]">Le Défi du Pharmacien</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Les ventes de compléments alimentaires explosent. Vos patients achètent du naturel en pensant "sans danger". 
+                    Mais face à une ordonnance complexe, vérifier chaque interaction plante/médicament prend du temps que vous n'avez pas.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">🕒</span>
+                        <p class="text-sm"><strong>Chronophage :</strong> Consulter le Vidal + Thériaque + Google prend > 5 min.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">⚠️</span>
+                        <p class="text-sm"><strong>Risqué :</strong> Le risque d'interaction (ex: Millepertuis x Anticoagulants) est réel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization: Market Reality -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center items-center">
+                <h3 class="text-lg font-bold text-gray-700 mb-4 text-center">La Réalité au Comptoir</h3>
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+                <p class="text-xs text-center text-gray-400 mt-2">Estimation basée sur l'augmentation des ventes OTC</p>
+            </div>
+        </section>
+
+        <!-- 3. THE SOLUTION (Traffic Light System) -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-blue-900">La Solution PhytoCheck</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-2">Un système de feux tricolores immédiat, basé sur les principes actifs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Green Card -->
+                <div class="bg-white border-t-8 border-teal-500 rounded-xl shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">🟢</div>
+                    <h3 class="text-xl font-bold text-teal-600 mb-2">Compatible</h3>
+                    <p class="text-sm text-gray-600">Aucune interaction connue avec le profil du patient.</p>
+                    <div class="mt-4 bg-teal-50 text-teal-800 text-xs py-1 px-3 rounded-full inline-block">Délivrance Autorisée</div>
+                </div>
+                <!-- Orange Card -->
+                <div class="bg-white border-t-8 border-amber-500 rounded-xl shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">🟠</div>
+                    <h3 class="text-xl font-bold text-amber-600 mb-2">Attention</h3>
+                    <p class="text-sm text-gray-600">Précautions d'emploi ou surveillance nécessaire.</p>
+                    <div class="mt-4 bg-amber-50 text-amber-800 text-xs py-1 px-3 rounded-full inline-block">Conseil Requis</div>
+                </div>
+                <!-- Red Card -->
+                <div class="bg-white border-t-8 border-red-500 rounded-xl shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">🔴</div>
+                    <h3 class="text-xl font-bold text-red-600 mb-2">Danger</h3>
+                    <p class="text-sm text-gray-600">Contre-indication formelle (Pathologie ou Médicament).</p>
+                    <div class="mt-4 bg-red-50 text-red-800 text-xs py-1 px-3 rounded-full inline-block">Ne pas délivrer</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MVP DATA STRUCTURE (Focus: MENOGYNE) -->
+        <!-- This section answers the specific request to fill the table with Menogyne data -->
+        <section class="bg-blue-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4">🔍 Zoom MVP : La Structure de Données</h2>
+                <p class="text-blue-100 opacity-90">
+                    Pour le MVP, nous ne stockons pas seulement le "nom" du produit, mais ses <strong>principes actifs</strong>. 
+                    C'est ce qui permet au moteur de règles de détecter les conflits.
+                    Voici l'exemple concret pour le produit <strong>Ménogyne</strong>.
+                </p>
+            </div>
+
+            <!-- Simulation of the App Interface logic -->
+            <div class="bg-white text-gray-800 rounded-xl overflow-hidden shadow-lg">
+                <div class="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="font-bold text-lg flex items-center">
+                        <span class="mr-2">📂</span> Base de Données (Aperçu Google Sheet / Supabase)
+                    </h3>
+                    <span class="text-xs font-mono bg-gray-200 px-2 py-1 rounded">Table: products_active_ingredients</span>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-50 text-gray-600 uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-3">Produit</th>
+                                <th class="px-6 py-3">Ingrédients Actifs (Clés)</th>
+                                <th class="px-6 py-3">Propriétés / Cible</th>
+                                <th class="px-6 py-3 text-red-600">⚠️ CI : Pathologie (Tags)</th>
+                                <th class="px-6 py-3 text-red-600">⚠️ CI : Médicament (Tags)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- MENOGYNE ROW -->
+                            <tr class="hover:bg-blue-50 transition">
+                                <td class="px-6 py-4 font-bold text-blue-900">
+                                    Ménogyne (Les 3 Chênes)<br>
+                                    <span class="text-xs font-normal text-gray-500">EAN: 3525720002154</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Sauge (Sage)</span>
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Houblon (Hops)</span>
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Lin (Flax)</span>
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">Zinc</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-gray-600">
+                                    Troubles de la ménopause,<br>Bouffées de chaleur
+                                </td>
+                                <td class="px-6 py-4 bg-red-50">
+                                    <span class="font-semibold text-red-700">#Cancer_Hormono_Dependant</span><br>
+                                    <span class="text-xs text-red-500">(Présence Phytoestrogènes)</span>
+                                </td>
+                                <td class="px-6 py-4 bg-red-50">
+                                    <span class="font-semibold text-red-700">#Tamoxifène</span><br>
+                                    <span class="font-semibold text-red-700">#Traitement_Hormonal</span>
+                                </td>
+                            </tr>
+                            <!-- GENERIC EXAMPLE ROW -->
+                            <tr class="opacity-60">
+                                <td class="px-6 py-4 font-bold text-gray-500">
+                                    Millepertuis Arkogélules
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-gray-200 rounded-full text-xs">Millepertuis (Hypericum)</span>
+                                </td>
+                                <td class="px-6 py-4">Dépression légère</td>
+                                <td class="px-6 py-4">
+                                    <span class="text-xs">#Photosensibilité</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="text-xs">#Anticoagulants</span>
+                                    <span class="text-xs">#Contraceptifs</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-gray-50 px-6 py-4 text-xs text-gray-500">
+                    * Cette structure permet de croiser automatiquement les ingrédients avec le dossier patient. Si une patiente a un historique de cancer du sein, <strong>Ménogyne</strong> sortira en <span class="text-red-600 font-bold">ROUGE</span>.
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ROADMAP & PHASES -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Development Timeline -->
+            <div>
+                <h2 class="text-2xl font-bold text-blue-900 mb-6">🗓️ Roadmap de Développement</h2>
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="w-8 h-8 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <div class="h-full w-1 bg-blue-200 my-1"></div>
+                        </div>
+                        <div class="pb-6">
+                            <h3 class="text-lg font-bold text-gray-800">POC / MVP (1 Semaine)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                <strong>Objectif :</strong> Tester la logique de sécurité.<br>
+                                • Base de données : 50 produits clés (dont Ménogyne).<br>
+                                • Interface : Recherche manuelle (pas de scan OCR encore).<br>
+                                • Tech : Supabase + React (Lovable).
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <div class="h-full w-1 bg-teal-200 my-1"></div>
+                        </div>
+                        <div class="pb-6">
+                            <h3 class="text-lg font-bold text-gray-800">Beta Test (Mois 1)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                <strong>Objectif :</strong> Feedback terrain.<br>
+                                • Déploiement chez 2 pharmacies partenaires.<br>
+                                • Correction des faux positifs.<br>
+                                • Optimisation Mobile/Tablette.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex">
+                        <div class="flex flex-col items-center mr-4">
+                            <div class="w-8 h-8 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold" style="background-color:#f43f5e;">3</div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">V1 Commerciale (Mois 2)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                <strong>Objectif :</strong> Vente & Fiabilité.<br>
+                                • Mode Offline complet (PWA).<br>
+                                • Import massif (2000+ produits).<br>
+                                • Module de paiement (Stripe).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Breakdown Visualization -->
+            <div>
+                <h2 class="text-2xl font-bold text-blue-900 mb-6">💰 Structure de Coûts (Est.)</h2>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <p class="text-sm text-gray-600 mb-4">
+                        Investissement initial minimal grâce à l'usage de l'IA (Lovable/Claude) pour le code et Supabase (Free Tier) pour la donnée.
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONCLUSION -->
+        <footer class="bg-gray-800 text-white rounded-2xl p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Prêt à sécuriser vos patients ?</h2>
+            <p class="mb-6 opacity-80 max-w-2xl mx-auto">
+                PhytoCheck n'est pas juste une application, c'est votre assistant de sécurité. 
+                Commençons par le MVP pour valider l'impact réel au comptoir.
+            </p>
+            <div class="inline-block border border-gray-500 px-8 py-3 rounded-lg bg-gray-700/50">
+                Prochaine étape : Validation de la liste des 50 premiers produits.
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- SCRIPT FOR CHARTS -->
+    <script>
+        // --- Common Config ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#4b5563';
+
+        // --- Label Wrapping Helper ---
+        function wrapLabel(label, maxChars) {
+            if (label.length <= maxChars) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- 1. Market Chart (Donut) ---
+        const ctxMarket = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctxMarket, {
+            type: 'doughnut',
+            data: {
+                labels: ['Achats Sans Conseil (Risque)', 'Achats Sécurisés Pharm.', 'Achats Internet (Inconnu)'],
+                datasets: [{
+                    data: [45, 30, 25],
+                    backgroundColor: ['#f43f5e', '#14b8a6', '#f59e0b'], // Coral, Teal, Amber
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Cost/Timeline Chart (Bar) ---
+        const ctxCost = document.getElementById('costChart').getContext('2d');
+        new Chart(ctxCost, {
+            type: 'bar',
+            data: {
+                labels: ['Phase 1: MVP', 'Phase 2: V1 & Scale', 'Maintenance Mensuelle'],
+                datasets: [{
+                    label: 'Coût Estimé ($ IA Credits)',
+                    data: [50, 250, 30],
+                    backgroundColor: '#1e3a8a', // Dark Blue
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, grid: { display: false } },
+                    x: { grid: { display: false } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- 
+        NO SVG USED.
+        NO MERMAID JS USED.
+        Structure: Tailwind CSS Grid/Flex.
+        Palette: Deep Ocean & Coral (Vibrant Professional).
+    -->
+</body>
+</html>Screenshot 2026-02-24 at 10.52.53.png
